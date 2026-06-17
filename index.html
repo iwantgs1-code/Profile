@@ -1,0 +1,611 @@
+```
+<index.html>
+<html lang="ko">
+
+```
+```
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>김귀성 | 상상우리 AI 컨설턴트</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Dancing+Script:wght@600&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+        --bg-card: #fbf9f3;
+        --text-dark: #2b2b2b;
+        --text-gray: #5f5a50;
+        --accent-bronze: #a07e4c;
+        --accent-gold: #b8935a;
+        --border-line: #e0d8c6;
+        --navy: #1a2942;
+    }
+
+    body {
+        font-family: 'Noto Sans KR', sans-serif;
+        color: var(--text-dark);
+        line-height: 1.7;
+        padding: 55px 20px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+        position: relative;
+        background:
+            radial-gradient(circle at 15% 20%, #efe9dc 0%, transparent 45%),
+            radial-gradient(circle at 85% 80%, #e6dfce 0%, transparent 50%),
+            linear-gradient(135deg, #ebe4d5 0%, #f2ede1 50%, #e8e1d0 100%);
+        background-attachment: fixed;
+    }
+
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image: radial-gradient(rgba(120,100,70,0.05) 1px, transparent 1px);
+        background-size: 4px 4px;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    body::after {
+        content: 'INSIGHT';
+        position: fixed;
+        right: -2%;
+        bottom: 2%;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 22vw;
+        font-weight: 600;
+        letter-spacing: 1vw;
+        color: rgba(160, 126, 76, 0.05);
+        pointer-events: none;
+        z-index: 0;
+        line-height: 1;
+        white-space: nowrap;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1080px;
+        background: var(--bg-card);
+        border-radius: 10px;
+        box-shadow:
+            0 40px 90px rgba(60,45,20,0.22),
+            0 8px 24px rgba(60,45,20,0.10);
+        overflow: hidden;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* ============ 1페이지 ============ */
+    .header {
+        padding: 55px 55px 38px;
+        position: relative;
+    }
+    .header::after {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 55px; right: 55px; bottom: 0;
+        height: 1px;
+        background: var(--border-line);
+    }
+    .section-label {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 14px;
+        letter-spacing: 6px;
+        color: var(--accent-bronze);
+        text-transform: uppercase;
+        border-left: 2px solid var(--accent-bronze);
+        padding-left: 14px;
+        margin-bottom: 18px;
+    }
+    .main-title {
+        font-family: 'Noto Serif KR', serif;
+        font-size: 44px;
+        font-weight: 700;
+        line-height: 1.25;
+        color: var(--text-dark);
+        margin-bottom: 24px;
+    }
+    .main-title .accent { color: var(--accent-bronze); }
+    .name-block { display: flex; align-items: center; gap: 18px; }
+    .name-block .name {
+        font-family: 'Noto Serif KR', serif;
+        font-size: 28px; font-weight: 700;
+        letter-spacing: 4px; color: var(--navy);
+    }
+    .name-block .vert-line { width: 1px; height: 26px; background: var(--border-line); }
+    .name-block .role { font-size: 15px; color: var(--text-gray); font-weight: 500; }
+
+    .content { display: grid; grid-template-columns: 42% 58%; align-items: stretch; }
+
+    .cover-panel {
+        background: linear-gradient(160deg, #ece6d8 0%, #ddd5c2 100%);
+        display: flex; align-items: center; justify-content: center;
+        padding: 50px 42px; position: relative;
+    }
+    .cover-panel::before {
+        content: '';
+        position: absolute; inset: 0;
+        background: radial-gradient(circle at 70% 25%, rgba(255,255,255,0.45), transparent 55%);
+        pointer-events: none;
+    }
+    .cover-panel img {
+        position: relative;
+        max-width: 100%; max-height: 560px;
+        width: auto; height: auto;
+        object-fit: contain; border-radius: 4px;
+        box-shadow: 0 30px 55px rgba(40,30,10,0.35), 0 10px 20px rgba(40,30,10,0.18);
+        transform: perspective(1200px) rotateY(-2deg);
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+        display: block;
+    }
+    .cover-panel img:hover {
+        transform: perspective(1200px) rotateY(0deg) translateY(-6px);
+        box-shadow: 0 40px 70px rgba(40,30,10,0.42), 0 14px 26px rgba(40,30,10,0.22);
+    }
+
+    .body-panel { padding: 48px 50px 50px; }
+    .intro-text { font-size: 14px; color: var(--text-gray); line-height: 1.85; margin-bottom: 12px; }
+    .intro-text strong { color: var(--text-dark); font-weight: 600; }
+
+    .block-heading { display: flex; align-items: center; gap: 12px; margin: 32px 0 20px; }
+    .block-heading .icon {
+        width: 34px; height: 34px; border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent-gold), var(--accent-bronze));
+        display: flex; align-items: center; justify-content: center;
+        color: #fff; font-size: 15px; flex-shrink: 0;
+        box-shadow: 0 4px 12px rgba(160,126,76,0.3);
+    }
+    .block-heading .heading-text {
+        font-family: 'Noto Serif KR', serif;
+        font-size: 18px; font-weight: 700; color: var(--text-dark);
+    }
+    .block-heading .heading-line { flex: 1; height: 1px; background: var(--border-line); }
+
+    .career-item { display: flex; gap: 18px; margin-bottom: 18px; align-items: flex-start; }
+    .career-item .num {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 27px; font-weight: 600; color: var(--accent-bronze);
+        line-height: 1; min-width: 32px;
+    }
+    .career-item .desc { font-size: 13.5px; color: var(--text-gray); line-height: 1.65; padding-top: 3px; }
+    .career-item .desc strong { color: var(--text-dark); font-weight: 600; }
+
+    .help-list { list-style: none; }
+    .help-list li {
+        position: relative; padding-left: 22px; margin-bottom: 12px;
+        font-size: 13.5px; color: var(--text-gray); line-height: 1.7;
+    }
+    .help-list li::before {
+        content: ''; position: absolute; left: 0; top: 9px;
+        width: 7px; height: 7px; border-radius: 50%; background: var(--accent-gold);
+    }
+    .help-list li strong { color: var(--text-dark); font-weight: 600; }
+
+    .contact-bar {
+        display: flex; gap: 16px; margin-top: 34px; padding-top: 24px;
+        border-top: 1px solid var(--border-line); flex-wrap: wrap;
+    }
+    .contact-btn {
+        display: flex; align-items: center; gap: 10px;
+        padding: 13px 22px; border-radius: 50px; text-decoration: none;
+        font-size: 13.5px; font-weight: 500; transition: all 0.3s ease;
+    }
+    .contact-btn.email {
+        background: linear-gradient(135deg, var(--accent-gold), var(--accent-bronze));
+        color: #fff; box-shadow: 0 8px 20px rgba(160,126,76,0.3);
+    }
+    .contact-btn.email:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(160,126,76,0.45); }
+    .contact-btn.phone {
+        background: var(--navy); color: #fff; box-shadow: 0 8px 20px rgba(26,41,66,0.3);
+    }
+    .contact-btn.phone:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(26,41,66,0.45); }
+    .contact-btn .ico { font-size: 16px; }
+
+    /* ============ 2페이지 ============ */
+    .page2 { display: grid; grid-template-columns: 30% 70%; align-items: stretch; }
+
+    /* 좌측 사이드 */
+    .p2-side {
+        background: linear-gradient(160deg, #ece6d8 0%, #ddd5c2 100%);
+        padding: 45px 32px;
+        display: flex; flex-direction: column; align-items: center;
+        position: relative;
+    }
+    .p2-side::before {
+        content: '';
+        position: absolute; inset: 0;
+        background: radial-gradient(circle at 60% 20%, rgba(255,255,255,0.4), transparent 55%);
+        pointer-events: none;
+    }
+    .p2-name {
+        position: relative; z-index: 2;
+        font-family: 'Noto Serif KR', serif;
+        font-size: 36px; font-weight: 700; letter-spacing: 6px;
+        color: var(--navy); text-align: center; margin-bottom: 8px;
+    }
+    .p2-name-line {
+        position: relative; z-index: 2;
+        width: 40px; height: 2px; background: var(--accent-bronze); margin-bottom: 28px;
+    }
+    .p2-photo {
+        position: relative; z-index: 2;
+        width: 100%; max-width: 210px;
+        border-radius: 10px; overflow: hidden;
+        box-shadow: 0 18px 40px rgba(40,30,10,0.3);
+        margin-bottom: 32px;
+    }
+    .p2-photo img {
+        width: 100%; height: 280px; object-fit: cover; display: block;
+    }
+    .edu-item {
+        position: relative; z-index: 2;
+        display: flex; gap: 14px; align-items: flex-start;
+        width: 100%; margin-bottom: 18px;
+    }
+    .edu-item .e-icon {
+        width: 38px; height: 38px; border-radius: 50%;
+        background: linear-gradient(135deg, var(--navy), #2e425f);
+        display: flex; align-items: center; justify-content: center;
+        color: #fff; font-size: 16px; flex-shrink: 0;
+        box-shadow: 0 5px 14px rgba(26,41,66,0.3);
+    }
+    .edu-item .e-title { font-size: 15px; font-weight: 700; color: var(--text-dark); }
+    .edu-item .e-desc { font-size: 12px; color: var(--text-gray); line-height: 1.5; }
+
+    /* 우측 메인 */
+    .p2-main { padding: 48px 50px 45px; }
+    .p2-title {
+        font-family: 'Noto Serif KR', serif;
+        font-size: 34px; font-weight: 700; color: var(--text-dark);
+        text-align: center; margin-bottom: 8px;
+    }
+    .p2-title .accent { color: var(--accent-bronze); }
+    .p2-subtitle {
+        font-size: 13.5px; color: var(--text-gray);
+        text-align: center; margin-bottom: 40px;
+    }
+
+    /* 타임라인 */
+    .timeline {
+        display: grid; grid-template-columns: repeat(4, 1fr);
+        gap: 10px; position: relative; margin-bottom: 18px;
+    }
+    .timeline::before {
+        content: ''; position: absolute;
+        top: 64px; left: 8%; right: 4%;
+        height: 2px;
+        background: linear-gradient(90deg, var(--accent-gold), var(--accent-bronze));
+        z-index: 0;
+    }
+    .tl-col { position: relative; z-index: 1; text-align: center; }
+    .tl-year {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 19px; font-weight: 700; color: var(--accent-bronze);
+        margin-bottom: 12px;
+    }
+    .tl-logo {
+        display: inline-flex; align-items: center; justify-content: center;
+        min-width: 70px; height: 36px; padding: 0 12px; margin-bottom: 14px;
+        background: #fff; border-radius: 6px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        font-family: 'Cormorant Garamond', serif; font-weight: 700;
+        font-size: 15px; letter-spacing: 1px; color: var(--navy);
+    }
+    .tl-role { font-size: 13.5px; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
+    .tl-desc { font-size: 11.5px; color: var(--text-gray); line-height: 1.55; }
+    .tl-sub {
+        margin-top: 12px; padding-top: 10px;
+        border-top: 1px dashed var(--border-line);
+    }
+    .tl-sub .tl-role { font-size: 12.5px; }
+
+    /* 3칼럼 영역 */
+    .p2-cols {
+        display: grid; grid-template-columns: repeat(3, 1fr);
+        gap: 26px; margin-top: 36px;
+        padding-top: 32px; border-top: 1px solid var(--border-line);
+    }
+    .col-head { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .col-head .c-icon {
+        width: 32px; height: 32px; border-radius: 50%;
+        background: var(--navy);
+        display: flex; align-items: center; justify-content: center;
+        color: #fff; font-size: 14px; flex-shrink: 0;
+    }
+    .col-head .c-title { font-size: 14.5px; font-weight: 700; color: var(--text-dark); }
+
+    .col-block { margin-bottom: 14px; }
+    .col-block .cb-title {
+        font-size: 13px; font-weight: 700; color: var(--accent-bronze); margin-bottom: 3px;
+    }
+    .col-block .cb-desc { font-size: 12px; color: var(--text-gray); line-height: 1.55; }
+
+    .strength-item {
+        display: flex; align-items: center; gap: 9px;
+        background: #f4efe4; border-radius: 6px;
+        padding: 9px 13px; margin-bottom: 9px;
+        font-size: 12.5px; color: var(--text-dark);
+    }
+    .strength-item .chk { color: var(--accent-bronze); font-weight: 700; }
+
+    .ach-item {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 9px 0; border-bottom: 1px dashed var(--border-line);
+    }
+    .ach-item .a-label { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--text-gray); }
+    .ach-item .a-ico { color: var(--accent-bronze); font-size: 14px; }
+    .ach-item .a-value {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 20px; font-weight: 700; color: var(--navy);
+    }
+
+    /* 인용구 */
+    .p2-quote {
+        margin-top: 36px; padding: 24px 30px;
+        background: linear-gradient(135deg, #f1ebde, #ece5d5);
+        border-radius: 10px;
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 20px; flex-wrap: wrap;
+    }
+    .p2-quote .q-text {
+        font-family: 'Noto Serif KR', serif;
+        font-size: 16px; font-weight: 600; color: var(--text-dark);
+    }
+    .p2-quote .q-text .q-mark { color: var(--accent-bronze); font-size: 28px; vertical-align: -8px; margin-right: 6px; }
+    .p2-quote .q-sign {
+        font-family: 'Dancing Script', cursive;
+        font-size: 28px; color: var(--accent-bronze);
+    }
+
+    /* 반응형 */
+    @media (max-width: 880px) {
+        .content { grid-template-columns: 1fr; }
+        .header { padding: 45px 35px 32px; }
+        .header::after { left: 35px; right: 35px; }
+        .main-title { font-size: 36px; }
+        .cover-panel { padding: 45px 30px; }
+        .cover-panel img { max-height: 500px; transform: none; }
+        .body-panel { padding: 40px 35px 45px; }
+
+        .page2 { grid-template-columns: 1fr; }
+        .p2-main { padding: 40px 35px 40px; }
+        .timeline { grid-template-columns: repeat(2, 1fr); gap: 24px 10px; }
+        .timeline::before { display: none; }
+        .p2-cols { grid-template-columns: 1fr; gap: 30px; }
+        body::after { font-size: 40vw; }
+    }
+    @media (max-width: 480px) {
+        body { padding: 18px 8px; gap: 30px; }
+        .header { padding: 35px 24px 26px; }
+        .header::after { left: 24px; right: 24px; }
+        .main-title { font-size: 29px; }
+        .name-block { flex-wrap: wrap; gap: 12px; }
+        .cover-panel { padding: 35px 24px; }
+        .cover-panel img { max-height: 420px; }
+        .body-panel { padding: 32px 24px 38px; }
+        .contact-bar { flex-direction: column; }
+        .contact-btn { justify-content: center; }
+
+        .p2-side { padding: 38px 28px; }
+        .p2-main { padding: 32px 24px 36px; }
+        .timeline { grid-template-columns: 1fr; }
+        .p2-title { font-size: 27px; }
+        .p2-quote { flex-direction: column; align-items: flex-start; }
+    }
+</style>
+</head>
+<body>
+
+    <!-- ============ 1페이지 ============ -->
+    <div class="container">
+        <header class="header">
+            <div class="section-label">Profile</div>
+            <h1 class="main-title">기술을 넘어 <span class="accent">사람을 잇다</span></h1>
+            <div class="name-block">
+                <span class="name">김 귀 성</span>
+                <span class="vert-line"></span>
+                <span class="role">상상우리 AI 컨설턴트</span>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="cover-panel">
+                <img src="cover.jpg" alt="김귀성 INSIGHT 표지">
+            </div>
+
+            <div class="body-panel">
+                <p class="intro-text">
+                    <strong>38년 경력</strong>의 대부분을 문제 해결 관련 업무를 수행하였습니다.
+                    다수의 대기업에서 혁신과 프로세스 개선을 위한 프로젝트를 수행하였습니다.
+                </p>
+                <p class="intro-text">
+                    최근에는 대학생들과 팀을 이뤄 포항시 <strong>"골목 상권 살리기"</strong> 및
+                    <strong>"관광 활성화"</strong> 등 사회문제를 해결하는 데 기여하였습니다.
+                </p>
+                <p class="intro-text">
+                    다양한 업과 프로세스에서의 경험은 여러분들의 문제를 해결하는 데 도움을 줄 것이라 생각합니다.
+                </p>
+
+                <div class="block-heading">
+                    <span class="icon">📍</span>
+                    <span class="heading-text">무엇을 하였나요?</span>
+                    <span class="heading-line"></span>
+                </div>
+                <div class="career-item">
+                    <span class="num">01</span>
+                    <span class="desc">디자인 씽킹 프로젝트 수행, <strong>"포항시 골목상권 살리기, 포항시 관광 활성화"</strong> 포항시 표창 수상</span>
+                </div>
+                <div class="career-item">
+                    <span class="num">02</span>
+                    <span class="desc">대기업 대상 품질관리 프로세스, 마케팅·영업 프로세스 개선 프로젝트 수행, <strong>LS 전선 감사패</strong></span>
+                </div>
+                <div class="career-item">
+                    <span class="num">03</span>
+                    <span class="desc"><strong>생산성, 품질 개선 및 혁신 PMO</strong> 수행</span>
+                </div>
+
+                <div class="block-heading">
+                    <span class="icon">🤝</span>
+                    <span class="heading-text">무엇을 도와줄 수 있나요?</span>
+                    <span class="heading-line"></span>
+                </div>
+                <ul class="help-list">
+                    <li>기업 대상 고객 관점에서의 문제 점 해결 <strong>(AI 기반 절차 및 프로세스 개선)</strong></li>
+                    <li>중소 제조업 대상 <strong>AI·통계 활용 품질 관리 교육</strong> 및 문제해결</li>
+                </ul>
+
+                <div class="contact-bar">
+                    <a class="contact-btn email" href="mailto:iwantgs1@gmail.com">
+                        <span class="ico">✉️</span><span>iwantgs1@gmail.com</span>
+                    </a>
+                    <a class="contact-btn phone" href="tel:01099813538">
+                        <span class="ico">📞</span><span>010-9981-3538</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ 2페이지 ============ -->
+    <div class="container">
+        <div class="page2">
+            <!-- 좌측 사이드 -->
+            <div class="p2-side">
+                <div class="p2-name">김 귀 성</div>
+                <div class="p2-name-line"></div>
+                <div class="p2-photo">
+                    <img src="photo2.jpg" alt="김귀성">
+                </div>
+                <div class="edu-item">
+                    <span class="e-icon">🎓</span>
+                    <div>
+                        <div class="e-title">전자공학 전공</div>
+                        <div class="e-desc">기술적 기반과 시스템적 사고</div>
+                    </div>
+                </div>
+                <div class="edu-item">
+                    <span class="e-icon">💼</span>
+                    <div>
+                        <div class="e-title">경영 MBA</div>
+                        <div class="e-desc">비즈니스 통찰과 전략적 실행력</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 우측 메인 -->
+            <div class="p2-main">
+                <h2 class="p2-title">기술을 넘어, <span class="accent">사람을 잇다</span></h2>
+                <p class="p2-subtitle">생산기술 혁신과 Digital Transformation으로 가치를 만들어 온 여정</p>
+
+                <!-- 타임라인 -->
+                <div class="timeline">
+                    <div class="tl-col">
+                        <div class="tl-year">1988</div>
+                        <div class="tl-logo">LG</div>
+                        <div class="tl-role">생산기술/혁신</div>
+                        <div class="tl-desc">TPS, SKILL, TDR</div>
+                    </div>
+                    <div class="tl-col">
+                        <div class="tl-year">2002</div>
+                        <div class="tl-logo">SAMSUNG SDS</div>
+                        <div class="tl-role">6 Sigma 도입</div>
+                        <div class="tl-desc">전개, 영업, 마케팅<br>방법론 개발</div>
+                    </div>
+                    <div class="tl-col">
+                        <div class="tl-year">2006</div>
+                        <div class="tl-logo">IBM</div>
+                        <div class="tl-role">6 Sigma 확산</div>
+                        <div class="tl-desc">현대중공업, 아모레퍼시픽<br>LS 전선, 엠트론, SL 자동차</div>
+                        <div class="tl-sub">
+                            <div class="tl-role">SCM (NPD)</div>
+                            <div class="tl-desc">두산인프라코어</div>
+                        </div>
+                    </div>
+                    <div class="tl-col">
+                        <div class="tl-year">2023~2025</div>
+                        <div class="tl-logo">POSCO</div>
+                        <div class="tl-role">Biz Model Innovation</div>
+                        <div class="tl-desc">IP Project<br>컨설팅, 과제선정</div>
+                        <div class="tl-sub">
+                            <div class="tl-role">취업 Academy</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3칼럼 -->
+                <div class="p2-cols">
+                    <!-- 경험 -->
+                    <div>
+                        <div class="col-head">
+                            <span class="c-icon">👤</span>
+                            <span class="c-title">경험 (Experience)</span>
+                        </div>
+                        <div class="col-block">
+                            <div class="cb-desc">38년 이상 다양한 산업과 기업에서 문제 해결과 혁신을 실행해 왔습니다.</div>
+                        </div>
+                        <div class="col-block">
+                            <div class="cb-title">산업</div>
+                            <div class="cb-desc">전기전자, IT, 건설업, 중공업, 철강, 화장품, 기계 자동차</div>
+                        </div>
+                        <div class="col-block">
+                            <div class="cb-title">프로세스</div>
+                            <div class="cb-desc">마케팅에서 구매까지 전 Value Chain 전반 경험</div>
+                        </div>
+                    </div>
+
+                    <!-- 핵심 강점 -->
+                    <div>
+                        <div class="col-head">
+                            <span class="c-icon">⭐</span>
+                            <span class="c-title">핵심 강점 (Core Strengths)</span>
+                        </div>
+                        <div class="strength-item"><span class="chk">✓</span> 문제 해결 및 혁신 실행력</div>
+                        <div class="strength-item"><span class="chk">✓</span> 데이터 기반 의사결정</div>
+                        <div class="strength-item"><span class="chk">✓</span> 다양한 산업 경험과 네트워크</div>
+                        <div class="strength-item"><span class="chk">✓</span> 사람 중심의 리더십</div>
+                    </div>
+
+                    <!-- 주요 성과 -->
+                    <div>
+                        <div class="col-head">
+                            <span class="c-icon">📊</span>
+                            <span class="c-title">주요 성과 (Key Achievements)</span>
+                        </div>
+                        <div class="ach-item">
+                            <span class="a-label"><span class="a-ico">🏅</span> 수상</span>
+                            <span class="a-value">2회</span>
+                        </div>
+                        <div class="ach-item">
+                            <span class="a-label"><span class="a-ico">📈</span> 프로젝트 수행</span>
+                            <span class="a-value">100+</span>
+                        </div>
+                        <div class="ach-item">
+                            <span class="a-label"><span class="a-ico">👥</span> 교육 &amp; 멘토링</span>
+                            <span class="a-value">500+</span>
+                        </div>
+                        <div class="ach-item">
+                            <span class="a-label"><span class="a-ico">🤝</span> 협업 기업</span>
+                            <span class="a-value">30+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 인용구 -->
+                <div class="p2-quote">
+                    <div class="q-text"><span class="q-mark">"</span>사람과 기술을 잇는 혁신으로 더 나은 미래를 만들어갑니다.</div>
+                    <div class="q-sign">Kim GS</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+```
